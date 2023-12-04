@@ -6,20 +6,9 @@ FROM base AS builder
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-# Omit --production flag for TypeScript devDependencies
+COPY package.json pnpm-lock.yaml* ./
 
-# RUN \
-#   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-#   elif [ -f package-lock.json ]; then npm ci; \
-#   # elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
-#   elif [ -f pnpm-lock.yaml ]; then npm -g install pnpm && pnpm i; \
-#   # Allow install without lockfile, so example works even without Node.js installed locally
-#   else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
-#   fi
-
-#RUN npm -g install pnpm && pnpm i;
-RUN npm i;
+RUN npm -g install pnpm && pnpm i;
 
 COPY src ./src
 COPY public ./public
@@ -34,22 +23,14 @@ COPY tsconfig.json .
 # ARG NEXT_PUBLIC_DOMAIN
 # ENV NEXT_PUBLIC_DOMAIN=${NEXT_PUBLIC_DOMAIN}
 ARG NEXT_PUBLIC_DIRECTUS_URL
+#ENV NEXT_PUBLIC_DIRECTUS_URL=${NEXT_PUBLIC_DIRECTUS_URL}
 ENV NEXT_PUBLIC_DIRECTUS_URL="https://fotogelmes-assets.juliuszlioba.com"
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line to disable telemetry at build time
 ENV NEXT_TELEMETRY_DISABLED 1
 
-# Build Next.js based on the preferred package manager
-# RUN \
-#   if [ -f yarn.lock ]; then yarn build; \
-#   elif [ -f package-lock.json ]; then npm run build; \
-#   elif [ -f pnpm-lock.yaml ]; then pnpm build; \
-#   else yarn build; \
-#   fi
-
-#RUN pnpm build;
-RUN npm run build;
+RUN pnpm build;
 
 # Note: It is not necessary to add an intermediate step that does a full copy of `node_modules` here
 
@@ -74,6 +55,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # ARG NEXT_PUBLIC_DOMAIN
 # ENV NEXT_PUBLIC_DOMAIN=${NEXT_PUBLIC_DOMAIN}
 ARG NEXT_PUBLIC_DIRECTUS_URL
+#ENV NEXT_PUBLIC_DIRECTUS_URL=${NEXT_PUBLIC_DIRECTUS_URL}
 ENV NEXT_PUBLIC_DIRECTUS_URL="https://fotogelmes-assets.juliuszlioba.com"
 
 # Uncomment the following line to disable telemetry at run time
