@@ -25,31 +25,19 @@ function ConsentBanner() {
 
 	return (
 		<>
-			<div className="mx-4 flex items-center gap-4 whitespace-nowrap border-t pb-8 pt-2 text-sm text-gray-600 md:hidden">
+			<div className="mx-4 mt-8 flex items-center gap-4 whitespace-nowrap border-t pb-8 pt-2 text-sm text-gray-600">
 				<Link
 					href={`/autorines-teises`}
-					className="underline-offset-2 hover:text-foreground hover:underline"
+					className="underline-offset-2 hover:text-foreground hover:underline md:hidden"
 				>
 					&copy; fotogelmes.lt
 				</Link>
 				<Link
 					href={`/privatumo-politika`}
-					className="underline-offset-2 hover:text-foreground hover:underline"
-					onClick={() => setOpen(true)}
+					className="ml-auto underline-offset-2 hover:text-foreground hover:underline"
 				>
 					Privatumo politika
 				</Link>
-				<Button
-					variant={'ghost'}
-					size={'icon'}
-					onClick={() => setOpen(true)}
-					className="ml-auto"
-				>
-					<Cookie strokeWidth={1.5} />
-				</Button>
-			</div>
-
-			<div className="z-20 max-md:hidden md:fixed md:bottom-[129px] md:left-[136px]">
 				<Button variant={'ghost'} size={'icon'} onClick={() => setOpen(true)}>
 					<Cookie strokeWidth={1.5} />
 				</Button>

@@ -1,12 +1,9 @@
 export default function AutorinesTeisesPage() {
 	return (
-		<div className="h-full min-h-full w-full px-4 pt-12 md:py-12 md:pr-12">
-			<div className="inline-flex h-full w-full flex-col items-center gap-8 lg:flex-row">
-				<div className="flex w-2/3 flex-col space-y-2 pb-12">
+		<div className="relative flex w-full flex-col items-center justify-between px-4 md:py-12 md:pr-12">
+			<div className="min-h-full w-full gap-8">
+				<div className="space-y-2 xl:w-2/3">
 					<h1 className="text-3xl">Privatumo politika</h1>
-					{/* <h2 className="text-xl">
-						asmeninės ir komercinės fotografijos studija
-					</h2> */}
 					<p className="pb-2">
 						Fotogelmės įmonei priklausančioje fotogelmės.lt svetainėje yra
 						renkami ir valdomi jūsų asmeniniai duomenys.
@@ -110,7 +107,7 @@ export default function AutorinesTeisesPage() {
 						prašymą atskeisti jūsų asmeninius duomenis.
 					</p>
 					<h2 className="pb-1 pt-3 text-xl">Kontaktinė informacija:</h2>
-					<p className="pb-12">
+					<p>
 						Jeigu norite gauti daugiau informacijos apie šią privatumo politiką
 						arba apie jūsų asmeninius duomenis, kreipkitės į mus el. paštu
 						<a

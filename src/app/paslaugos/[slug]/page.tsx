@@ -80,7 +80,7 @@ export default async function Paslauga({
 	}
 
 	return (
-		<div className="min-h-full w-full px-4 md:py-12 md:pr-12">
+		<div className="h-full min-h-full w-full px-4 py-4 pt-12 md:py-12 md:pr-12">
 			<div className="flex h-full w-full flex-col gap-8 lg:flex-row lg:items-center">
 				<div className="space-y-4 lg:w-1/3">
 					<div>

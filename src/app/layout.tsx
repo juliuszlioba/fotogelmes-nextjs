@@ -29,10 +29,12 @@ export default async function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="flex h-full flex-col gap-x-8 gap-y-4 md:flex-row lg:h-screen">
+					<div className="flex min-h-full flex-col gap-x-8 gap-y-4 md:flex-row lg:h-screen">
 						<Aside />
-						{children}
-						<ConsentBanner />
+						<div className="min-h-full w-full flex-col">
+							{children}
+							<ConsentBanner />
+						</div>
 					</div>
 				</ThemeProvider>
 			</body>

@@ -7,7 +7,7 @@ export async function generateMetadata() {
 
 export default function Kontaktai() {
 	return (
-		<div className="min-h-full w-full px-4 md:py-12 md:pr-12">
+		<div className="relative flex h-full w-full flex-col items-center justify-between px-4 md:py-12 md:pr-12">
 			<div className="flex h-full w-full flex-col gap-8 lg:flex-row lg:items-center">
 				<div className="space-y-4 lg:w-1/3">
 					<div>

@@ -13,7 +13,7 @@ export const NAV_LINKS = [
 export function Aside() {
 	return (
 		<div className="z-10 flex h-20 w-full shrink-0 md:h-screen md:w-60">
-			<div className="fixed inset-0 flex h-20 flex-col justify-between gap-8 bg-background px-4 pt-5 md:h-screen md:w-60 md:py-12 md:pl-12 md:pr-0">
+			<div className="fixed inset-0 flex h-20 flex-col justify-between gap-8 bg-background px-4 pt-5 md:h-screen md:w-60 md:overflow-y-auto md:py-12 md:pl-12 md:pr-0">
 				<div className="flex justify-between">
 					<div className="w-28 max-md:hidden md:w-32">
 						<Link href="/">
@@ -49,13 +49,7 @@ export function Aside() {
 				<div className="inline-flex gap-1 max-md:hidden">
 					<ModeToggle />
 				</div>
-				<div className="flex flex-col border-t pt-2 text-sm text-gray-600 max-md:hidden">
-					<Link
-						href={`/privatumo-politika`}
-						className="underline-offset-2 hover:text-foreground hover:underline"
-					>
-						Privatumo politika
-					</Link>
+				<div className="flex h-8 border-t pt-2 text-sm text-gray-600 max-md:hidden">
 					<Link
 						href={`/autorines-teises`}
 						className="whitespace-nowrap underline-offset-2 hover:text-foreground hover:underline"

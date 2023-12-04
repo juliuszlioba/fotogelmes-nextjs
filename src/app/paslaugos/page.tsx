@@ -55,12 +55,12 @@ export default async function Paslaugos() {
 
 	return (
 		<div className="w-full">
-			<div className="h-full w-full snap-y snap-proximity overflow-y-auto px-4 md:pr-12">
+			<div className="h-full w-full px-4 md:pr-12">
 				<div className="grid gap-16 md:gap-x-8 lg:grid-cols-2 2xl:grid-cols-3">
 					{data.map((item) => {
 						return (
 							<div key={item.id} className="shrink-0 md:py-12 xl:h-screen">
-								<div className="flex h-full w-full snap-center items-center">
+								<div className="flex h-full w-full items-center">
 									<div className="flex h-full flex-col gap-8">
 										<div className="h-[400px] rounded-md bg-muted lg:h-3/4">
 											<div className="flex h-full w-full overflow-hidden rounded-md">

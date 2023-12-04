@@ -13,10 +13,11 @@ export default function NotFound() {
 	}
 
 	return (
-		<div className="min-h-full w-full px-4 md:py-12 md:pr-12">
+		<div className="relative flex h-full w-full flex-col items-center justify-between px-4 md:py-12 md:pr-12">
 			<div className="flex h-full w-full flex-col gap-8 lg:flex-row lg:items-center">
-				<div className="flex flex-col items-center justify-center space-y-4 py-4 lg:w-1/5">
-					<FileWarning size={36} strokeWidth={1.5} />
+				<div className="space-y-4 text-center lg:w-1/5">
+					<FileWarning size={36} strokeWidth={1.5} className="mx-auto" />
+
 					<h2 className="text-2xl">404 | Nerasta</h2>
 					<div>
 						<Button variant="default" onClick={handleRefresh}>
@@ -25,13 +26,13 @@ export default function NotFound() {
 					</div>
 				</div>
 				<div className="h-full lg:w-4/5">
-					<div className="relative flex h-full min-h-[300px] w-full overflow-hidden rounded-md bg-muted md:min-h-[300px]">
+					<div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-md bg-muted">
 						<Image
 							src={`/images/not-found.jpg`}
 							alt="Nerasta"
 							width={1400}
 							height={933}
-							className="object-cover"
+							className="h-full min-h-[400px] w-full object-cover"
 						/>
 					</div>
 				</div>

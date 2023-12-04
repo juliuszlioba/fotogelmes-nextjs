@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 export default function AutorinesTeisesPage() {
 	return (
-		<div className="h-full min-h-full w-full px-4 pt-12 md:py-12 md:pr-12">
+		<div className="h-full min-h-full w-full px-4 py-4 pt-12 md:py-12 md:pr-12">
 			<div className="inline-flex h-full w-full flex-col items-center gap-8 lg:flex-row">
-				<div className="flex w-2/3 flex-col space-y-2">
+				<div className="flex flex-col space-y-2 xl:w-2/3">
 					<h1 className="text-3xl">
 						Informacijos panaudojimas ir autorinės teisės
 					</h1>

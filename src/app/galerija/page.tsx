@@ -36,8 +36,8 @@ async function getData(): Promise<any> {
 export default async function Galerija() {
 	const data = await getData()
 	return (
-		<main className="relative flex w-full flex-col items-center justify-between px-4 md:py-12 md:pr-12">
+		<div className="relative flex w-full flex-col items-center justify-between px-4 md:py-12 md:pr-12">
 			<MasonryGallery data={data} />
-		</main>
+		</div>
 	)
 }
