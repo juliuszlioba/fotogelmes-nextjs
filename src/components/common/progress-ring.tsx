@@ -1,8 +1,6 @@
 'use client'
 
-import { Equal, Play } from 'lucide-react'
 import React, { useState, useEffect } from 'react'
-import { Button } from '../ui/button'
 
 /*
 Based on: https://css-tricks.com/building-progress-ring-quickly/
@@ -12,7 +10,7 @@ const ProgressRing = ({
 	size = 24,
 	progress: progressInput = 0,
 	strokeWidth = 3,
-	timer = 7000, // ???
+	timer = 5000, // ???
 	callBackFunction = () => {
 		return
 	},
@@ -23,12 +21,12 @@ const ProgressRing = ({
 	const [offset, setOfsset] = React.useState(circumference)
 	const [running, setRunning] = useState(true)
 
-	const handlePause = () => {
-		if (running) {
-			setProgress(0)
-		}
-		setRunning(!running)
-	}
+	// const handlePause = () => {
+	// 	if (running) {
+	// 		setProgress(0)
+	// 	}
+	// 	setRunning(!running)
+	// }
 
 	useEffect(() => {
 		const offset = circumference - (progressInput / 100) * circumference
@@ -55,7 +53,7 @@ const ProgressRing = ({
 
 	return (
 		<div className="relative leading-none">
-			<Button
+			{/* <Button
 				variant="ghost"
 				size="icon"
 				onClick={handlePause}
@@ -96,7 +94,7 @@ const ProgressRing = ({
 						/>
 					</svg>
 				</div>
-			</Button>
+			</Button> */}
 		</div>
 	)
 }

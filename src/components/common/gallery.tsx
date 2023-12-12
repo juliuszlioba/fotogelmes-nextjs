@@ -2,7 +2,12 @@
 
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight, InfoIcon } from 'lucide-react'
+import {
+	ChevronLeft,
+	ChevronRight,
+	InfoIcon,
+	Image as Imageico,
+} from 'lucide-react'
 import {
 	Popover,
 	PopoverContent,
@@ -71,16 +76,30 @@ const Gallery = ({
 	}, [])
 
 	return (
-		<div className="flex max-h-screen flex-col items-center gap-2 rounded p-4">
-			<div className="flex overflow-hidden p-1">
+		<div className="flex max-h-screen flex-col items-center gap-2 p-4">
+			<div className="relative flex flex-col overflow-hidden p-1">
 				<Image
 					src={getAssetURL(data[index].id)}
 					alt={data[index].title}
 					width={data[index].width}
 					height={data[index].height}
-					className="overflow-hidden object-contain"
+					className="h-full w-full"
 				/>
+				{/* <div className="absolute inset-3 opacity-0 duration-300 hover:opacity-100">
+					<div className="absolute bottom-0 w-full bg-background bg-opacity-80 p-6">
+						<h2 className="text-xl">{data[index].title}</h2>
+						<p className="text-sm">
+							{data[index].description || data[index].title}
+						</p>
+					</div>
+				</div> */}
 			</div>
+			{/* <div className="max-w-md">
+				<h2 className="text-xl">{data[index].title}</h2>
+				<p className="text-sm">
+					{data[index].description || data[index].title}
+				</p>
+			</div> */}
 			<div className="flex gap-1">
 				<TooltipProvider>
 					<Popover>
@@ -88,8 +107,9 @@ const Gallery = ({
 							<div>
 								<Tooltip>
 									<TooltipTrigger asChild>
-										<Button variant="ghost" size="icon">
-											<InfoIcon strokeWidth={1.5} />
+										<Button variant="ghost" className="gap-2">
+											<Imageico strokeWidth={1.5} />
+											Info
 										</Button>
 									</TooltipTrigger>
 									<TooltipContent>

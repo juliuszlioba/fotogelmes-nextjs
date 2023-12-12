@@ -44,8 +44,8 @@ function ConsentBanner() {
 			</div>
 
 			{open && (
-				<div className="pointer-events-none fixed inset-0 z-50 mt-auto flex items-end justify-end p-4 duration-500 animate-in fade-in slide-in-from-bottom md:p-8">
-					<div className="pointer-events-auto relative max-h-full max-w-3xl space-y-2 overflow-y-auto rounded-md border-2 border-muted bg-background p-6 shadow-2xl">
+				<div className="pointer-events-none fixed inset-0 z-50 mt-auto flex items-end justify-end p-2 duration-500 animate-in fade-in slide-in-from-bottom md:p-8">
+					<div className="pointer-events-auto relative max-h-full max-w-3xl space-y-2 overflow-y-auto bg-background p-6 shadow-2xl">
 						<h2 className="flex items-center gap-2 text-2xl">
 							<Cookie strokeWidth={1.5} />
 							Slapukai ir privatumas

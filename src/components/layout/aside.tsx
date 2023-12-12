@@ -7,6 +7,7 @@ import { NavSheet } from './nav-sheet'
 export const NAV_LINKS = [
 	{ title: 'Paslaugos', href: '/paslaugos' },
 	{ title: 'Galerija', href: '/galerija' },
+	{ title: 'Apie', href: '/apie' },
 	{ title: 'Kontaktai', href: '/kontaktai' },
 ]
 

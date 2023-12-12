@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog'
 import { Gallery } from './gallery'
 import { Button } from '../ui/button'
-import { X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import ProgressRing from './progress-ring'
 import { getAssetURL } from '@/lib/get-asset-url'
 
@@ -37,6 +37,16 @@ const SlideShow = ({ data }: { data: GaleryItem[] }) => {
 		})
 	}
 
+	const prevSlide = () => {
+		setIndex((oldIndex) => {
+			let index = oldIndex - 1
+			if (index < 0) {
+				index = data.length - 1
+			}
+			return index
+		})
+	}
+
 	if (data.length === 0) {
 		return null
 	}
@@ -56,17 +66,33 @@ const SlideShow = ({ data }: { data: GaleryItem[] }) => {
 							alt={data[index].title}
 							width={data[index].width}
 							height={data[index].height}
-							className={`hover:scale-102 absolute h-full w-full object-cover duration-300`}
+							className={`absolute h-full w-full object-cover duration-300 hover:scale-102`}
 						/>
 					</div>
 				</DialogTrigger>
 				{data.length > 1 && (
-					<div className="absolute bottom-4 right-4">
+					<div className="absolute bottom-4 right-4 inline-flex">
 						<ProgressRing
 							callBackFunction={() => {
 								!open && nextSlide()
 							}}
 						/>
+						<Button
+							variant="secondary"
+							size="icon"
+							className="h-8 w-6 bg-background bg-opacity-50 hover:bg-background hover:bg-opacity-100"
+							onClick={() => prevSlide()}
+						>
+							<ChevronLeft strokeWidth={1.5} />
+						</Button>
+						<Button
+							variant="secondary"
+							size="icon"
+							className="h-8 w-6 bg-background bg-opacity-50 hover:bg-background hover:bg-opacity-100"
+							onClick={() => nextSlide()}
+						>
+							<ChevronRight strokeWidth={1.5} />
+						</Button>
 					</div>
 				)}
 			</div>

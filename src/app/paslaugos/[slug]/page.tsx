@@ -98,7 +98,7 @@ export default async function Paslauga({
 					</div>
 				</div>
 				<div className="h-full lg:w-2/3">
-					<div className="relative flex h-full min-h-[600px] w-full overflow-hidden rounded-md bg-muted md:min-h-[600px]">
+					<div className="relative flex h-full min-h-[600px] w-full overflow-hidden bg-muted md:min-h-[600px]">
 						{data.gallery_item.length >= 1 ? (
 							<SlideShow data={data.gallery_item.map((item) => item.item)} />
 						) : (

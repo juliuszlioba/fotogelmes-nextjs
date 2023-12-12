@@ -26,7 +26,7 @@ export default function NotFound() {
 					</div>
 				</div>
 				<div className="h-full lg:w-4/5">
-					<div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-md bg-muted">
+					<div className="relative h-full min-h-[400px] w-full overflow-hidden bg-muted">
 						<Image
 							src={`/images/not-found.jpg`}
 							alt="Nerasta"

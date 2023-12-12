@@ -28,6 +28,6 @@ module.exports = (phase, { defaultConfig }) => {
 				pathname: '/assets/**',
 			},
 		]},
-		output: 'standalone',
+		//output: 'standalone',
 	}
 }

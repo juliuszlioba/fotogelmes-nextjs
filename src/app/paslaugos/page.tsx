@@ -59,33 +59,34 @@ export default async function Paslaugos() {
 				<div className="grid gap-16 md:gap-x-8 lg:grid-cols-2 2xl:grid-cols-3">
 					{data.map((item) => {
 						return (
-							<div key={item.id} className="shrink-0 md:py-12 xl:h-screen">
-								<div className="flex h-full w-full items-center">
-									<div className="flex h-full flex-col gap-8">
-										<div className="h-[400px] rounded-md bg-muted lg:h-3/4">
-											<div className="flex h-full w-full overflow-hidden rounded-md">
-												<Link
-													href={`/paslaugos/${item.slug}`}
-													className="inset-0 flex"
-												>
-													<Image
-														src={getAssetURL(item.thumbnail.id)}
-														alt={item.thumbnail.title}
-														width={item.thumbnail.width}
-														height={item.thumbnail.height}
-														className="object-cover duration-300 hover:scale-102"
-													/>
-												</Link>
-											</div>
+							<div
+								key={item.id}
+								className="flex md:py-12 lg:h-screen lg:items-center"
+							>
+								<div className="flex flex-col gap-8">
+									<div className="h-full max-h-[480px] bg-muted md:h-[400px] lg:h-[450px] xl:h-[480px]">
+										<div className="flex h-full w-full overflow-hidden">
+											<Link
+												href={`/paslaugos/${item.slug}`}
+												className="inset-0 flex"
+											>
+												<Image
+													src={getAssetURL(item.thumbnail.id)}
+													alt={item.thumbnail.title}
+													width={item.thumbnail.width}
+													height={item.thumbnail.height}
+													className="object-cover duration-300 hover:scale-102"
+												/>
+											</Link>
 										</div>
-										<div className="space-y-3 lg:h-1/4">
-											<h2 className="text-3xl">{item.title}</h2>
-											<p className="line-clamp-5">{item.short_description}</p>
-											<div>
-												<Link href={`/paslaugos/${item.slug}`}>
-													<Button>Daugiau</Button>
-												</Link>
-											</div>
+									</div>
+									<div className="flex flex-col space-y-3">
+										<h2 className="text-3xl">{item.title}</h2>
+										<p className="line-clamp-2">{item.short_description}</p>
+										<div>
+											<Link href={`/paslaugos/${item.slug}`}>
+												<Button>Daugiau</Button>
+											</Link>
 										</div>
 									</div>
 								</div>

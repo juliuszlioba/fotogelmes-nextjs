@@ -29,7 +29,7 @@ export default async function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="flex min-h-full flex-col gap-x-8 gap-y-4 md:flex-row lg:h-screen">
+					<div className="flex min-h-full flex-col gap-x-8 gap-y-4 md:flex-row xl:h-screen">
 						<Aside />
 						<div className="min-h-full w-full flex-col">
 							{children}

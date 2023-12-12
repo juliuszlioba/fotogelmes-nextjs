@@ -39,11 +39,11 @@ export default function Kontaktai() {
 					</div>
 				</div>
 				<div className="h-full lg:w-2/3">
-					<div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-md bg-muted">
+					<div className="relative h-full min-h-[400px] w-full overflow-hidden bg-muted">
 						{/* <Image
 							src={map}
 							alt="Žemėlapis"
-							className="h-full min-h-[400px] w-full rounded-md object-cover"
+							className="h-full min-h-[400px] w-full object-cover"
 						/> */}
 						<iframe
 							src="https://snazzymaps.com/embed/343214"

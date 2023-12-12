@@ -63,10 +63,10 @@ export default async function Home() {
 					</span>
 				</h1>
 				<div className="flex h-full w-full flex-col gap-8 xl:flex-row">
-					<div className="relative flex h-full min-h-[600px] w-full overflow-hidden rounded-md bg-muted md:min-h-[600px]">
+					<div className="relative flex h-full min-h-[600px] w-full overflow-hidden bg-muted md:min-h-[600px]">
 						<SlideShow data={data.slice(0, data.length / 2)} />
 					</div>
-					<div className="relative flex h-full min-h-[600px] w-full overflow-hidden rounded-md bg-muted md:min-h-[600px]">
+					<div className="relative flex h-full min-h-[600px] w-full overflow-hidden bg-muted md:min-h-[600px]">
 						<SlideShow data={data.slice(data.length / 2, data.length)} />
 					</div>
 				</div>
