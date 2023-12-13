@@ -2,12 +2,7 @@
 
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import {
-	ChevronLeft,
-	ChevronRight,
-	InfoIcon,
-	Image as Imageico,
-} from 'lucide-react'
+import { ChevronLeft, ChevronRight, Image as Imageico } from 'lucide-react'
 import {
 	Popover,
 	PopoverContent,
@@ -21,6 +16,7 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { getAssetURL } from '@/lib/get-asset-url'
+import { useSwipeable } from 'react-swipeable'
 
 interface GaleryItem {
 	id: string
@@ -41,6 +37,16 @@ const Gallery = ({
 }) => {
 	const [index, setIndex] = useState(initIndex)
 
+	const prevSlide = () => {
+		setIndex((oldIndex) => {
+			let index = oldIndex - 1
+			if (index < 0) {
+				index = data.length - 1
+			}
+			return index
+		})
+	}
+
 	const nextSlide = () => {
 		setIndex((oldIndex) => {
 			let index = oldIndex + 1
@@ -51,15 +57,10 @@ const Gallery = ({
 		})
 	}
 
-	const prevSlide = () => {
-		setIndex((oldIndex) => {
-			let index = oldIndex - 1
-			if (index < 0) {
-				index = data.length - 1
-			}
-			return index
-		})
-	}
+	const handlers = useSwipeable({
+		onSwipedLeft: () => nextSlide(),
+		onSwipedRight: () => prevSlide(),
+	})
 
 	useEffect(() => {
 		function onKeyup(e: { key: string }) {
@@ -77,7 +78,7 @@ const Gallery = ({
 
 	return (
 		<div className="flex max-h-screen flex-col items-center gap-2 p-4">
-			<div className="relative flex flex-col overflow-hidden p-1">
+			<div className="relative flex flex-col overflow-hidden p-1" {...handlers}>
 				<Image
 					src={getAssetURL(data[index].id)}
 					alt={data[index].title}

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { useSwipeable } from 'react-swipeable'
 
 import {
 	Dialog,
@@ -27,6 +28,16 @@ const SlideShow = ({ data }: { data: GaleryItem[] }) => {
 	const [index, setIndex] = useState(0)
 	const [open, setOpen] = useState(false)
 
+	const prevSlide = () => {
+		setIndex((oldIndex) => {
+			let index = oldIndex - 1
+			if (index < 0) {
+				index = data.length - 1
+			}
+			return index
+		})
+	}
+
 	const nextSlide = () => {
 		setIndex((oldIndex) => {
 			let index = oldIndex + 1
@@ -37,15 +48,10 @@ const SlideShow = ({ data }: { data: GaleryItem[] }) => {
 		})
 	}
 
-	const prevSlide = () => {
-		setIndex((oldIndex) => {
-			let index = oldIndex - 1
-			if (index < 0) {
-				index = data.length - 1
-			}
-			return index
-		})
-	}
+	const handlers = useSwipeable({
+		onSwipedLeft: () => nextSlide(),
+		onSwipedRight: () => prevSlide(),
+	})
 
 	if (data.length === 0) {
 		return null
@@ -60,7 +66,7 @@ const SlideShow = ({ data }: { data: GaleryItem[] }) => {
 						setIndex(index)
 					}}
 				>
-					<div>
+					<div {...handlers}>
 						<Image
 							src={getAssetURL(data[index].id)}
 							alt={data[index].title}
