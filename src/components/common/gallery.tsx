@@ -77,14 +77,21 @@ const Gallery = ({
 	}, [])
 
 	return (
-		<div className="flex max-h-screen flex-col items-center gap-2 p-4">
-			<div className="relative flex flex-col overflow-hidden p-1" {...handlers}>
+		<div className="flex h-screen max-h-screen flex-col items-center gap-2 p-4">
+			<div
+				className="relative flex h-full flex-col overflow-hidden p-1"
+				{...handlers}
+			>
 				<Image
 					src={getAssetURL(data[index].id)}
 					alt={data[index].title}
 					width={data[index].width}
 					height={data[index].height}
-					className="h-full w-full"
+					style={{
+						maxHeight: data[index].height + 'px',
+						maxWidth: data[index].width + 'px',
+					}}
+					className="mx-auto my-auto h-full w-full"
 				/>
 				{/* <div className="absolute inset-3 opacity-0 duration-300 hover:opacity-100">
 					<div className="absolute bottom-0 w-full bg-background bg-opacity-80 p-6">
