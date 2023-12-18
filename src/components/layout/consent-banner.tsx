@@ -6,25 +6,61 @@ import { Button } from '../ui/button'
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { Checkbox } from '@/components/ui/checkbox'
+import { GoogleTagManager } from '@next/third-parties/google'
+import { useRouter } from 'next/navigation'
 
 function ConsentBanner() {
 	const [open, setOpen] = useState(false)
 	const [openSettings, setOpenSettings] = useState(false)
+	const [consent, setConsent] = useState(false)
+	const router = useRouter()
+
+	const [consentCheckbox, setConsentCheckbox] = useState(false)
 
 	const acceptConsent = () => {
+		Cookies.set('consent-banner', 'accepted', { expires: 31 })
 		Cookies.set('consent', 'granted', { expires: 31 })
+		router.refresh()
+		setConsent(true)
+		setConsentCheckbox(true)
 		setOpen(false)
 	}
 
+	const declineConsent = () => {
+		Cookies.set('consent-banner', 'accepted', { expires: 31 })
+		Cookies.set('consent', 'denied', { expires: 31 })
+		router.refresh()
+		setConsent(false)
+		setConsentCheckbox(false)
+		setOpen(false)
+	}
+
+	const handleConsentSettingsSave = () => {
+		if (consentCheckbox === true) {
+			return acceptConsent()
+		}
+		return declineConsent()
+	}
+
 	useEffect(() => {
+		const consentBanner = Cookies.get('consent-banner')
 		const consent = Cookies.get('consent')
-		if (!consent) {
+		console.log(consentBanner, consent)
+
+		if (consentBanner === 'accepted') {
+			if (consent === 'granted') {
+				setConsent(true)
+				setConsentCheckbox(true)
+			}
+		} else {
 			setOpen(true)
 		}
 	}, [])
 
 	return (
 		<>
+			{consent && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTAG_ID!} />}
+
 			<div className="mx-4 mt-8 flex items-center gap-4 whitespace-nowrap border-t pb-8 pt-2 text-sm text-gray-600">
 				<Link
 					href={`/autorines-teises`}
@@ -45,7 +81,7 @@ function ConsentBanner() {
 
 			{open && (
 				<div className="pointer-events-none fixed inset-0 z-50 mt-auto flex items-end justify-end p-2 duration-500 animate-in fade-in slide-in-from-bottom md:p-8">
-					<div className="pointer-events-auto relative max-h-full max-w-3xl space-y-2 overflow-y-auto bg-background p-6 shadow-2xl">
+					<div className="pointer-events-auto relative max-h-full max-w-3xl space-y-2 overflow-y-auto bg-background p-6 shadow-2xl dark:border-2 dark:border-muted">
 						<h2 className="flex items-center gap-2 text-2xl">
 							<Cookie strokeWidth={1.5} />
 							Slapukai ir privatumas
@@ -92,7 +128,13 @@ function ConsentBanner() {
 									</div>
 
 									<div className="items-top flex space-x-2">
-										<Checkbox id="terms2" checked />
+										<Checkbox
+											id="terms2"
+											checked={consentCheckbox}
+											onClick={() => {
+												setConsentCheckbox(!consentCheckbox)
+											}}
+										/>
 										<div className="grid gap-1 leading-none">
 											<label
 												htmlFor="terms2"
@@ -106,7 +148,7 @@ function ConsentBanner() {
 										</div>
 									</div>
 
-									<div className="items-top flex space-x-2">
+									{/* <div className="items-top flex space-x-2">
 										<Checkbox id="terms3" />
 										<div className="grid gap-1 leading-none">
 											<label
@@ -119,10 +161,10 @@ function ConsentBanner() {
 												suasmenintu skelbimu rodymui
 											</p>
 										</div>
-									</div>
+									</div> */}
 									<Button
 										className="sm:mr-auto"
-										onClick={() => setOpenSettings(true)}
+										onClick={() => handleConsentSettingsSave()}
 									>
 										Išsaugoti nustatymus
 									</Button>
@@ -141,9 +183,11 @@ function ConsentBanner() {
 							<Button onClick={() => acceptConsent()}>
 								Priimti visus slapukus
 							</Button>
-							<Button onClick={() => acceptConsent()}>
-								Atmesti visus slapukus
-							</Button>
+							<a href="/">
+								<Button onClick={() => declineConsent()}>
+									Atmesti visus slapukus
+								</Button>
+							</a>
 						</div>
 					</div>
 				</div>
