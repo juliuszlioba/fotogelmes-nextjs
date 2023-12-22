@@ -64,7 +64,7 @@ export default async function Paslaugos() {
 								className="flex md:py-12 lg:h-screen lg:items-center"
 							>
 								<div className="flex flex-col gap-8">
-									<div className="h-full max-h-[480px] bg-muted md:h-[400px] lg:h-[450px] xl:h-[480px]">
+									<div className="h-full max-h-[450px] bg-muted md:h-[350px] lg:h-[400px] xl:h-[450px]">
 										<div className="flex h-full w-full overflow-hidden">
 											<Link
 												href={`/paslaugos/${item.slug}`}

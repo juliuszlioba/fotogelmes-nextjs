@@ -82,17 +82,19 @@ const Gallery = ({
 				className="relative flex h-full flex-col overflow-hidden p-1"
 				{...handlers}
 			>
-				<Image
-					src={getAssetURL(data[index].id)}
-					alt={data[index].title}
-					width={data[index].width}
-					height={data[index].height}
-					style={{
-						maxHeight: data[index].height + 'px',
-						maxWidth: data[index].width + 'px',
-					}}
-					className="mx-auto my-auto h-full w-full"
-				/>
+				<div className="flex h-full w-full">
+					<Image
+						src={getAssetURL(data[index].id)}
+						alt={data[index].title}
+						width={data[index].width}
+						height={data[index].height}
+						style={{
+							maxHeight: data[index].height + 'px',
+							maxWidth: data[index].width + 'px',
+						}}
+						className="h-full w-full object-contain"
+					/>
+				</div>
 				{/* <div className="absolute inset-3 opacity-0 duration-300 hover:opacity-100">
 					<div className="absolute bottom-0 w-full bg-background bg-opacity-80 p-6">
 						<h2 className="text-xl">{data[index].title}</h2>
